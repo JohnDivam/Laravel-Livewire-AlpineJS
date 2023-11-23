@@ -4,10 +4,19 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use Livewire\Attributes\Rule;
+use Hash;
 
 class Clicker extends Component
 {
-    public $name , $email, $password;
+    #[Rule('required|string|min:2|max:50')]
+    public $name ;
+
+    #[Rule('required|email')]
+    public $email; 
+
+    #[Rule('required|min:6')]
+    public $password;
 
     public function render()
     {
@@ -16,11 +25,17 @@ class Clicker extends Component
     }
 
     public function createNewUser(){
+        $validated = $this->validate();
+
         User::create([
-            'name'=>$this->name,
-            'email'=>$this->email,
-            'password'=>$this->password,
+            'name'=>$validated['name'],
+            'email'=>$validated['email'],
+            'password'=> Hash::make($validated['password']),
         ]);
+
+        $this->reset(['name','email','password']);
+
+        session()->flash('success','User Created Successfully!');
     }
 
 }
