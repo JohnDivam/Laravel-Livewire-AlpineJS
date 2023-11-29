@@ -12,6 +12,7 @@
         <input type="text" wire:model="password" placeholder="password" class="block rounded border border-gray-100 px-3 py-1 mb-1">
         @error('password') <span class="text-red-500 text-xs">{{$message}}</span> @enderror
 
+
         <button class="block rounded px-3 py-1 bg-gray-400 text-white"> Create New User </button>
     </form>
 
@@ -27,4 +28,6 @@
             @endforeach
         </tbody>
     </table>
+
+    {{$users->links('vendor.livewire.bootstrap')}}
 </div>
