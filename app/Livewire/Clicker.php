@@ -6,9 +6,12 @@ use Livewire\Component;
 use App\Models\User;
 use Livewire\Attributes\Rule;
 use Hash;
+use Livewire\WithPagination;
 
 class Clicker extends Component
 {
+    use WithPagination;
+    
     #[Rule('required|string|min:2|max:50')]
     public $name ;
 
@@ -20,7 +23,7 @@ class Clicker extends Component
 
     public function render()
     {
-        $users = User::latest()->get();
+        $users = User::latest()->paginate(5);
         return view('livewire.clicker',compact('users'));
     }
 
