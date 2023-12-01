@@ -22,28 +22,14 @@
             <span class="text-green-500">Uploading...</span>
         </div>
 
-        <button class="block rounded px-3 py-1 bg-gray-400 text-white"> Create New User </button>
+        <div wire:loading.delay.longest wire:target=createNewUser>
+            <span class="text-green-500">Sending...</span>
+        </div>
+
+        <button wire:loading.attr="disabled" wire:loading.class.remove="text-white" class="block rounded px-3 py-1 bg-gray-400 text-white"> 
+            Create New User 
+        </button>
     </form>
 
-    <table>
-        <thead>
-            <th>#</th>
-            <th>image</th>
-            <th>name</th>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-                <tr>
-                    <td>{{$user->id}}</td>
-                    <td>
-                        <img class="rounded w-10 h-10 mt" src="{{asset('storage/'.$user->image)}}" alt="">
-                    </td>
-                    <td>{{$user->name}}</td>
-                  
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    {{$users->links('vendor.livewire.bootstrap')}}
+   
 </div>
