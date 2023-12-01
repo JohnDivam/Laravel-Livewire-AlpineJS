@@ -9,7 +9,7 @@ use Hash;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
-class Clicker extends Component
+class CreateUser extends Component
 {
     use WithPagination;
     use WithFileUploads;
@@ -29,7 +29,7 @@ class Clicker extends Component
     public function render()
     {
         $users = User::latest()->paginate(5);
-        return view('livewire.clicker',compact('users'));
+        return view('livewire.create-user',compact('users'));
     }
 
     public function createNewUser(){

@@ -12,10 +12,10 @@
     
    <div class="row">
         <div class="col-6">
-            @livewire('users-list')
+            @livewire('users-list',['lazy'=>true,'search'=>''])
         </div>
         <div class="col-6">
-            @livewire('clicker')
+            @livewire('create-user')
         </div>
    </div>
 
