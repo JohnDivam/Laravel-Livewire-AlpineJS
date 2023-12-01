@@ -18,7 +18,7 @@ class CreateUser extends Component
     #[Rule('required|string|min:2|max:50')]
     public $name ;
 
-    #[Rule('required|email')]
+    #[Rule('required|email', as:'company email')]
     public $email; 
 
     #[Rule('required|min:6')]
@@ -34,7 +34,6 @@ class CreateUser extends Component
     }
 
     public function createNewUser(){
-        sleep(3);
         $validated = $this->validate();
 
         if($this->image){
