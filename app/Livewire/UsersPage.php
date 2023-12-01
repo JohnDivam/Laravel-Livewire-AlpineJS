@@ -6,23 +6,25 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
-class UsersList extends Component
+class UsersPage extends Component
 {
     use WithPagination;
     
     public $search = '';
+    public $user;
 
-    public function mount($search){
-        $this->search = $search;
-    }
-    
     #[On('user-created')]
+    #[Title('Users')]
     public function render()
     {
         $users = User::latest()->when($this->search !== '',function($qr){
             $qr->where('name','like','%'.$this->search.'%');
         })->paginate(10);
-        return view('livewire.users-list',compact('users'));
+        return view('livewire.users-page',compact('users'));
     }
+
+    
 }

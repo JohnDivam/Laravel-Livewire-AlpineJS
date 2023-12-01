@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Layout;
 use Hash;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
