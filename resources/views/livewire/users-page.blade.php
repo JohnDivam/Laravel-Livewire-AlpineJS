@@ -27,5 +27,14 @@
         </tbody>
     </table>
 
-    {{$users->links('vendor.livewire.bootstrap')}}
+    {{$users->links('vendor.livewire.tailwind')}}
+
+
+    <x-modal title="Create User">
+        @slot('body')
+        <span>Body..</span>
+        @endslot
+    </x-modal>
+
+    <button x-data x-on:click="$dispatch('open-modal')" class="px-3 py-1 bg-teal-500 text-white rounded"> Show Modal </button>
 </div>
