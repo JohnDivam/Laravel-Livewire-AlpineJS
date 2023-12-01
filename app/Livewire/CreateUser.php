@@ -9,7 +9,7 @@ use Hash;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
-class Clicker extends Component
+class CreateUser extends Component
 {
     use WithPagination;
     use WithFileUploads;
@@ -29,17 +29,18 @@ class Clicker extends Component
     public function render()
     {
         $users = User::latest()->paginate(5);
-        return view('livewire.clicker',compact('users'));
+        return view('livewire.create-user',compact('users'));
     }
 
     public function createNewUser(){
+        sleep(3);
         $validated = $this->validate();
 
         if($this->image){
            $validated['image'] = $this->image->store('uploads','public');
         }
 
-        User::create([
+        $user = User::create([
             'name'=>$validated['name'],
             'email'=>$validated['email'],
             'image'=>$validated['image'],
@@ -49,6 +50,8 @@ class Clicker extends Component
         $this->reset(['name','email','password','image']);
 
         session()->flash('success','User Created Successfully!');
+
+        $this->dispatch('user-created',$user);
     }
 
 }
