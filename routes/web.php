@@ -16,6 +16,6 @@ use App\Livewire\CreateUser;
 |
 */
 
-Route::get('/', HomePage::class);
-Route::get('/users', UsersPage::class);
+Route::get('/', HomePage::class)->name('home');
+Route::get('/users', UsersPage::class)->name('users');
 Route::get('/users/create', CreateUser::class);

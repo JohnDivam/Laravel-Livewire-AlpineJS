@@ -4,15 +4,15 @@
     @endif
     <form wire:submit="createNewUser" action="" class="p-5">
         <div class="mb-5">
-        <input type="text" wire:model="name" placeholder="name" class="block rounded border border-gray-100 px-3 py-1 mb-3">
+        <input type="text" wire:model="name" placeholder="Name" class="block rounded border border-gray-100 px-3 py-1 mb-3">
         @error('name') <span class="text-red-500 text-xs">{{$message}}</span> @enderror
         </div>
         <div class="mb-5">
-        <input type="text" wire:model="email" placeholder="email" class="block rounded border border-gray-100 px-3 py-1 mb-3">
+        <input type="text" wire:model="email" placeholder="Company email" class="block rounded border border-gray-100 px-3 py-1 mb-3">
         @error('email') <span class="text-red-500 text-xs">{{$message}}</span> @enderror
         </div>
         <div class="mb-5">
-        <input type="text" wire:model="password" placeholder="password" class="block rounded border border-gray-100 px-3 py-1 mb-3">
+        <input type="text" wire:model="password" placeholder="Password" class="block rounded border border-gray-100 px-3 py-1 mb-3">
         @error('password') <span class="text-red-500 text-xs">{{$message}}</span> @enderror
         </div>
         <div class="mb-5">
@@ -27,11 +27,11 @@
             <span class="text-green-500">Uploading...</span>
         </div>
 
-        <div wire:loading.delay.longest wire:target=createNewUser>
+        <div wire:loading.delay.longest wire:target="createNewUser">
             <span class="text-green-500">Sending...</span>
         </div>
 
-        <button wire:loading.attr="disabled" wire:loading.class.remove="text-white" class="block rounded px-3 py-1 bg-success text-white mt-3"> 
+        <button wire:loading.attr="disabled" wire:loading.class.remove="text-white" class="block rounded px-3 py-1 bg-green-500 text-white mt-3"> 
             Create New User 
         </button>
     </form>

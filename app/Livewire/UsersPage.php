@@ -14,8 +14,8 @@ class UsersPage extends Component
     use WithPagination;
     
     public $search = '';
-    public $user;
-
+    protected $queryString = ['search'];
+    
     #[On('user-created')]
     #[Title('Users')]
     public function render()
