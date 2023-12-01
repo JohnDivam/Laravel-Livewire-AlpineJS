@@ -1,4 +1,4 @@
-<div class="px-5 mx-auto mt-3" wire:poll.3s>
+<div class="px-5 mx-auto mt-3" wire:poll.5s>
     <!-- auto update: wire:poll.5s  -->
     <h3>Users: {{$users->total()}}</h3>
 
